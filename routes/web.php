@@ -6,9 +6,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LibroController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,19 +24,15 @@ use App\Http\Controllers\LogoutController;
 
 // show
 Route::get('/registermy', [RegisterController::class,'show']);
-
 //asignacion de la ruta por metodo post llamando a la clase
 Route::post('/registermy', [RegisterController::class,'registermy']);
-
 Route::get('/loginmy', [LoginController::class,'show']);
 //asignacion de la ruta por metodo post llamando a la clase
 Route::post('/loginmy', [LoginController::class,'authenticate']);
-
 Route::get('/homemy', [HomeController::class,'index']);
-
 Route::get('/logout', [LogoutController::class,'logout']);
 
-
+Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
 
 
 //todas las rutas

@@ -1,4 +1,5 @@
-@extends('layouts.plantillabase');
+@extends('layouts.plantillabase')
+@extends('layouts.partials.navbar')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />

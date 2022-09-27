@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('codigo',10)->nullable();
             $table->string('descripcion',50)->nullable();
             $table->integer('cantidad')->nullable();
-            $table->decimal('precio', 8, 2)->nullable();
+            $table->integer('precio')->nullable();
             $table->timestamps();
         });
     }

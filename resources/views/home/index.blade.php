@@ -15,7 +15,7 @@
     @endauth
     @guest
         <p>
-            Para ver el contenido debes de iniciar session!<a href="/loginmy"><strong>inicia sesion</strong></a>
+            Para ver el contenido debes de iniciar sesion!  <a href="/loginmy"><strong>inicia sesion</strong></a>
         </p>
     @endguest
 @endsection

@@ -2,7 +2,10 @@
 @section('content')
     <form action="/loginmy" method="POST">
         @csrf
-        <h1>Login</h1>
+        <div class="mb-2">
+                <img src="/img/user-logo2.webp" width="200px" height="180px">
+                <h3><strong>Inicio de session</strong></h3>
+        </div>
         @include('layouts.partials.messages')
         <div class="mb-2 row">
             <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Email</strong></label>

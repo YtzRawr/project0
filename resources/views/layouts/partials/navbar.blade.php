@@ -1,7 +1,21 @@
-<nav class="navbar navbar-expand-lg bg-primary">
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/homemy"><strong>
-                <h4>Intertrade</h4>
+                {{-- <style>
+                    .engranaje {
+                        /* cambia estos dos valores para definir el tamaño de tu círculo */
+                        height: 100px;
+                        width: 100px;
+                        /* los siguientes valores son independientes del tamaño del círculo */
+                        background-repeat: no-repeat;
+                        background-position: 50%;
+                        border-radius: 50%;
+                        background-size: 100% auto;
+                    }
+                </style> --}}
+                <div>
+                    <img src="/img/4.jpeg" width="80px" height="50px">
+                </div>
             </strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

@@ -19,8 +19,20 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            // 'username' =>'Test',
             'password' => 'test',
+            // 'username' =>'Test',
+
+        ]);
+
+
+
+        \App\Models\Articulo::factory(30)->create();
+
+        \App\Models\Articulo::factory()->create([
+            'cantidad' => '20',
+            'descripcion' => 'Zapatillas nike',
+            'precio' => '120000',
+            'codigo' => '9900',
         ]);
     }
 }

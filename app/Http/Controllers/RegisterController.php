@@ -23,5 +23,9 @@ class RegisterController extends Controller
         $user = User::create($request->validated());
         return redirect('/loginmy')->with('succes','Cuenta creada con exito!');
     }
+    public function index () {
+        $users = User::all();
+        return view('usuarios.index')->with('usuarios',$users);
+    }
 
 }

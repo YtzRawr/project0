@@ -2,8 +2,6 @@
 
 @section('content')
     <br>
-    <h3>Registro de libros</h3>
-
     @auth
         <p>
             {{-- ?? ->evalua una operacion --}}
@@ -19,3 +17,4 @@
         </p>
     @endguest
 @endsection
+

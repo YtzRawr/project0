@@ -3,7 +3,7 @@
 @section('content')
     <form action="/registermy" method="POST">
         @csrf
-        <h1>Registrese</h1>
+        <h3>Formulario de registro</h3>
         @include('layouts.partials.messages')
         <div class="mb-2 row">
             <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Nombre</strong></label>

@@ -1,5 +1,5 @@
 @extends('layouts.plantillabase')
-@extends('layouts.partials.navbar')
+@extends('layouts.partials.navbaruser')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
@@ -7,38 +7,31 @@
 
 
 @section('contenido')
-    <h3><strong>Registro de productos</strong></h3>
+    <h3><strong>Lista de usuarios registrados</strong></h3>
     <br>
-    <a href="articulos/create" class="btn btn-success"><Strong>Crear registro</Strong></a>
-    <br>
-    <br>
+    {{-- <a href="usuarios/registermy" class="btn btn-success"><Strong>Registrar nuevo usuario</Strong></a> --}}
     {{-- el datable se trae desde un id --}}
-    <table class="table table-light table-striped shadow-lg mt-4" id="articulos">
+    <table class="table table-light table-striped shadow-lg mt-4" id="usuarios">
         <thead class="bg-primary ">
             <tr>
                 <th scope="col"><strong>ID</strong></th>
-                <th scope="col"><strong>Codigo</strong></th>
-                <th scope="col"><strong>Descripcion</strong></th>
-                <th scope="col"><strong>Cantidad</strong></th>
-                <th scope="col"><strong>Precio</strong></th>
-                <th scope="col"><strong>Acciones</strong></th>
+                <th scope="col"><Strong>Name</Strong></th>
+                <th scope="col"><strong>Email</strong></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($articulos as $articulo)
+            @foreach ($usuarios as $usuario)
                 <tr>
-                    <td>{{ $articulo->id }}</td>
-                    <td>{{ $articulo->codigo }}</td>
-                    <td>{{ $articulo->descripcion }}</td>
-                    <td>{{ $articulo->cantidad }}</td>
-                    <td>{{ $articulo->precio }}</td>
+                    <td>{{ $usuario->id }}</td>
+                    <td>{{ $usuario->name }}</td>
+                    <td>{{ $usuario->email }}</td>
                     <td>
-                        <form action="{{ route('articulos.destroy', $articulo->id) }}" method="POST">
+                        {{-- <form action="{{ route('articulos.destroy', $articulo->id) }}" method="POST">
                             <a href="/articulos/{{ $articulo->id }}/edit" class="btn btn-warning">Editar</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Borrar</button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
             @endforeach
@@ -52,7 +45,7 @@
     {{-- script de la paginacion --}}
     <script>
         $(document).ready(function() {
-            $('#articulos').DataTable({
+            $('#usuarios').DataTable({
                 "lenghtmenu": [
                     [5, 10, 50, -1],
                     [5, 10, 50, "All"]

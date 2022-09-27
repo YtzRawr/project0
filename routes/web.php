@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -8,7 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
-
+use App\Models\Articulo;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,12 @@ Route::post('/registermy', [RegisterController::class,'registermy']);
 Route::get('/loginmy', [LoginController::class,'show']);
 //asignacion de la ruta por metodo post llamando a la clase
 Route::post('/loginmy', [LoginController::class,'authenticate']);
-Route::get('/homemy', [HomeController::class,'index']);
+Route::get('/homemy', [ArticuloController::class,'index']);
 Route::get('/logout', [LogoutController::class,'logout']);
 
 Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
+
+Route::resource('usuarios', 'App\Http\Controllers\RegisterController');
 
 
 //todas las rutas

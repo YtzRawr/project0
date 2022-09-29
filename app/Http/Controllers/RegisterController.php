@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterRequest;
+// use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,11 +19,18 @@ class RegisterController extends Controller
         // me retornara la vista
         return view('auth.register');
     }
-    public function registermy(RegisterRequest $request)
+    public function registermy(Request $request)
     {
         //el objeto me permitira manipular la solicitud
-        $user = User::create($request->validated());
-        return redirect('/loginmy')->with('succes', 'Cuenta creada con exito!');
+        // $user = User::create($request->validated());
+        // return redirect('/loginmy')->with('succes', 'Cuenta creada con exito!');
+        $users = new User();
+        $users ->name = $request->get('name');
+        $users ->email = $request->get('email');
+        $users ->password = $request->get('password');
+        $users ->role = $request->get('role');
+        $users-> save();
+        return redirect('/loginmy');
     }
     public function index()
     {

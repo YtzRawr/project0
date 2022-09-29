@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\AdminController;
 use App\Models\Articulo;
 
 /*
@@ -24,24 +25,26 @@ use App\Models\Articulo;
 
 
 // show
-Route::get('/registermy', [RegisterController::class,'show']);
+Route::get('/registermy', [RegisterController::class, 'show']);
 //asignacion de la ruta por metodo post llamando a la clase
-Route::post('/registermy', [RegisterController::class,'registermy']);
-Route::get('/loginmy', [LoginController::class,'show']);
+Route::post('/registermy', [RegisterController::class, 'registermy']);
+Route::get('/loginmy', [LoginController::class, 'show']);
 //asignacion de la ruta por metodo post llamando a la clase
-Route::post('/loginmy', [LoginController::class,'authenticate']);
-Route::get('/homemy', [ArticuloController::class,'index']);
-Route::get('/logout', [LogoutController::class,'logout']);
+Route::post('/loginmy', [LoginController::class, 'authenticate']);
+Route::get('/homemy', [ArticuloController::class, 'index']);
+Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
 
 Route::resource('usuarios', 'App\Http\Controllers\RegisterController');
 
-
+Route::get('/admin', [AdminController::class, 'index'])
+    ->middleware('auth.admin')
+    ->name('admin.index');
 //todas las rutas
 // Route::name('admin.')->middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 //     Route::resources([
 //         'users'          => UsersController::class,
 //     ]);
 // });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

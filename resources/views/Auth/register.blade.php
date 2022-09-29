@@ -21,12 +21,17 @@
                 <input type="password" name="password" class="form-control">
             </div>
         </div>
-        <div class="mb-2 row">
+        <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-3 col-form-label"><strong>Repetir password</strong></label>
             <div class="col-sm-10">
                 <input type="password" name="password_confirmation" class="form-control">
             </div>
         </div>
+        <select class="form-select mb-3" aria-label="Default select example">
+            <option selected>Seleccione un role</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Usuario">Usuario</option>
+        </select>
         <button type="submit" class="btn btn-primary">Registrarse</button>
         <p>¿Ya dispone de una cuenta?, inicie session <a href="/loginmy"><strong>Aqui</strong></a></p>
     </form>

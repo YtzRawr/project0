@@ -17,6 +17,8 @@
                 <th scope="col"><strong>ID</strong></th>
                 <th scope="col"><Strong>Name</Strong></th>
                 <th scope="col"><strong>Email</strong></th>
+                <th scope="col"><strong>Role</strong></th>
+                <th scope="col"><strong>Accion</strong></th>
             </tr>
         </thead>
         <tbody>
@@ -25,13 +27,15 @@
                     <td>{{ $usuario->id }}</td>
                     <td>{{ $usuario->name }}</td>
                     <td>{{ $usuario->email }}</td>
+                    <td>{{ $usuario->role }}</td>
                     <td>
-                        {{-- <form action="{{ route('articulos.destroy', $articulo->id) }}" method="POST">
-                            <a href="/articulos/{{ $articulo->id }}/edit" class="btn btn-warning">Editar</a>
+                        {{-- HAY QUE CAMBIAR --}}
+                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST">
+                            <a href="/usuarios/{{ $usuario->id }}/edit" class="btn btn-warning">Editar</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Borrar</button>
-                        </form> --}}
+                        </form>
                     </td>
                 </tr>
             @endforeach

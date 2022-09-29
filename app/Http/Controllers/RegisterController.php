@@ -10,22 +10,46 @@ use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     //
-    public function show(){
+    public function show()
+    {
         // para la autenticacion
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect('/homemy');
         }
         // me retornara la vista
         return view('auth.register');
     }
-    public function registermy(RegisterRequest $request){
+    public function registermy(RegisterRequest $request)
+    {
         //el objeto me permitira manipular la solicitud
         $user = User::create($request->validated());
-        return redirect('/loginmy')->with('succes','Cuenta creada con exito!');
+        return redirect('/loginmy')->with('succes', 'Cuenta creada con exito!');
     }
-    public function index () {
+    public function index()
+    {
         $users = User::all();
-        return view('usuarios.index')->with('usuarios',$users);
+        return view('usuarios.index')->with('usuarios', $users);
     }
-
+    public function edit($id)
+    {
+        //
+        $user = User::find($id);
+        return view('auth.edit')->with('user', $user);
+    }
+    public function update(Request $request, $id)
+    {
+        //
+        $user = User::find($id);
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->save();
+        return redirect('/usuarios');
+    }
+    public function destroy($id)
+    {
+        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/usuarios');
+    }
 }

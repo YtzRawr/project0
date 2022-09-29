@@ -9,25 +9,29 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     //
-    public function show(){
-        if(Auth::check()){
+    public function show()
+    {
+        if (Auth::check()) {
             return redirect('/homemy');
         }
         return view('auth.login');
     }
-    public function loginmy(LoginRequest $request){
+    public function loginmy(LoginRequest $request)
+    {
         // se obtienen las credenciales
         $credentials = $request->all();
         // \Log::info($credentials);
         //validaciones obtenidas del loginrequest
-        if(Auth::validate($credentials)){
+        if (Auth::validate($credentials)) {
             return redirect()->to('/loginmy')->withErrors('Nombre o password son incorrectos');
         }
+
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         // \Log::info($user);
         return $this->authenticated($request, $user);
     }
-    public function authenticated(Request $request, $user){
+    public function authenticated(Request $request, $user)
+    {
         return redirect('/homemy');
     }
 
@@ -41,11 +45,16 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->to('homemy');
+            if (auth()->user()->role == 'Administrador') {
+                return redirect()->route('admin.index');
+            } else {
+                return redirect()->to('homemy');
+            }
         }
 
+
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'correo o contraseña mal ingresado, intentelo de nuevo',
         ])->onlyInput('email');
     }
 }

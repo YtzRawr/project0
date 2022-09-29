@@ -21,7 +21,8 @@
                 <th scope="col"><strong>Descripcion</strong></th>
                 <th scope="col"><strong>Cantidad</strong></th>
                 <th scope="col"><strong>Precio</strong></th>
-                <th scope="col"><strong>Acciones</strong></th>
+                <th scope="col"><strong>Acciones
+                </strong></th>
             </tr>
         </thead>
         <tbody>

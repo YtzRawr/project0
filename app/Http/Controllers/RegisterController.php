@@ -35,7 +35,7 @@ class RegisterController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('usuarios.index')->with('usuarios', $users);
+        return view('admin.index')->with('usuarios', $users);
     }
     public function edit($id)
     {

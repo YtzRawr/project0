@@ -27,11 +27,13 @@
                 <input type="password" name="password_confirmation" class="form-control">
             </div>
         </div>
-        <select class="form-select mb-3" aria-label="Default select example" name="role">
-            <option selected><strong>Seleccione un role</strong></option>
-            <option value="Administrador" name="Administrador">Administrador</option>
-            <option value="Usuario" name="Usuario">Usuario</option>
-        </select>
+        <div>
+            <label class="mb-2"><strong>Seleccione un role</strong></label>
+            <select class="form-select mb-3" aria-label="Default select example" name="role">
+                <option value="Administrador" name="Administrador">Administrador</option>
+                <option value="Usuario" name="Usuario">Usuario</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Registrarse</button>
         <p>¿Ya dispone de una cuenta?, inicie session <a href="/loginmy"><strong>Aqui</strong></a></p>
     </form>

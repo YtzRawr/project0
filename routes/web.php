@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticuloUserController;
 use App\Models\Articulo;
 
 /*
@@ -35,6 +36,8 @@ Route::get('/homemy', [ArticuloController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
+
+Route::resource('articulosuser', 'App\Http\Controllers\ArticuloUserController');
 
 Route::resource('usuarios', 'App\Http\Controllers\RegisterController');
 

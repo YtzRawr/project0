@@ -7,36 +7,28 @@
 
 
 @section('contenido')
-    <h3><strong>Lista de usuarios registrados</strong></h3>
+    <h3><strong>Registro de productos</strong></h3>
     <br>
-    {{-- <a href="usuarios/registermy" class="btn btn-success"><Strong>Registrar nuevo usuario</Strong></a> --}}
+    <br>
     {{-- el datable se trae desde un id --}}
-    <table class="table table-light table-striped shadow-lg mt-4" id="usuarios">
+    <table class="table table-light table-striped shadow-lg mt-4" id="articulos">
         <thead class="bg-primary ">
             <tr>
                 <th scope="col"><strong>ID</strong></th>
-                <th scope="col"><Strong>Name</Strong></th>
-                <th scope="col"><strong>Email</strong></th>
-                <th scope="col"><strong>Role</strong></th>
-                <th scope="col"><strong>Accion</strong></th>
+                <th scope="col"><strong>Codigo</strong></th>
+                <th scope="col"><strong>Descripcion</strong></th>
+                <th scope="col"><strong>Cantidad</strong></th>
+                <th scope="col"><strong>Precio</strong></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($usuarios as $usuario)
+            @foreach ($articulos as $articulo)
                 <tr>
-                    <td>{{ $usuario->id }}</td>
-                    <td>{{ $usuario->name }}</td>
-                    <td>{{ $usuario->email }}</td>
-                    <td>{{ $usuario->role }}</td>
-                    <td>
-                        {{-- HAY QUE CAMBIAR --}}
-                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST">
-                            <a href="/usuarios/{{ $usuario->id }}/edit" class="btn btn-warning">Editar</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Borrar</button>
-                        </form>
-                    </td>
+                    <td>{{ $articulo->id }}</td>
+                    <td>{{ $articulo->codigo }}</td>
+                    <td>{{ $articulo->descripcion }}</td>
+                    <td>{{ $articulo->cantidad }}</td>
+                    <td>{{ $articulo->precio }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -49,7 +41,7 @@
     {{-- script de la paginacion --}}
     <script>
         $(document).ready(function() {
-            $('#usuarios').DataTable({
+            $('#articulos').DataTable({
                 "lenghtmenu": [
                     [5, 10, 50, -1],
                     [5, 10, 50, "All"]

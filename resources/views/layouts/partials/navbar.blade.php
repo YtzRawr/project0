@@ -27,9 +27,6 @@
                     <a class="nav-link active" aria-current="page" href="/homemy">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/registermy">Registrarse</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/usuarios">Usuarios</a>
                 </li>
                 @auth

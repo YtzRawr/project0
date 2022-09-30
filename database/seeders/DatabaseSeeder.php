@@ -43,10 +43,10 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole($role2);
 
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(200)->create();
 
 
-        \App\Models\Articulo::factory(20)->create();
+        \App\Models\Articulo::factory(200)->create();
 
         \App\Models\Articulo::factory()->create([
             'cantidad' => '20',

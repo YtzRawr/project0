@@ -9,9 +9,16 @@
     @section('contenido')
         <h3><strong>Registro de productos</strong></h3>
         <br>
-        <a href="articulos/create" class="btn btn-success"><Strong>Crear registro</Strong></a>
+        <a href="articulos/create" class="btn btn-success mb-2 btn-sm"><Strong>Crear registro</Strong></a>
         <br>
-        <br>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <a href="{{ route('articulo.excel') }}" class="btn btn-success mb-2 btn-sm"><Strong>Descargar
+                            excel</Strong></a>
+                </div>
+            </div>
+        </div>
         {{-- el datable se trae desde un id --}}
         <table class="table table-light table-striped shadow-lg mt-4" id="articulos">
             <thead class="bg-primary ">
@@ -35,10 +42,10 @@
                         <td>{{ $articulo->precio }}</td>
                         <td>
                             <form action="{{ route('articulos.destroy', $articulo->id) }}" method="POST">
-                                <a href="/articulos/{{ $articulo->id }}/edit" class="btn btn-warning">Editar</a>
+                                <a href="/articulos/{{ $articulo->id }}/edit" class="btn btn-warning btn-sm">Editar</a>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Borrar</button>
+                                <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
                             </form>
                         </td>
                     </tr>

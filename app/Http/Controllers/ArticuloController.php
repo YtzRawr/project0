@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Articulo;
 use Illuminate\Support\Facades\Artisan;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ArticuloExport;
 class ArticuloController extends Controller
 {
     /**
@@ -42,11 +43,11 @@ class ArticuloController extends Controller
     {
         //
         $articulos = new Articulo();
-        $articulos -> codigo = $request->get('codigo');
-        $articulos -> descripcion = $request->get('descripcion');
-        $articulos -> cantidad = $request->get('cantidad');
-        $articulos -> precio = $request->get('precio');
-        $articulos-> save();
+        $articulos->codigo = $request->get('codigo');
+        $articulos->descripcion = $request->get('descripcion');
+        $articulos->cantidad = $request->get('cantidad');
+        $articulos->precio = $request->get('precio');
+        $articulos->save();
         return redirect('/articulos');
     }
 
@@ -71,7 +72,7 @@ class ArticuloController extends Controller
     {
         //
         $articulo = Articulo::find($id);
-        return view('articulo.edit')->with('articulo',$articulo);
+        return view('articulo.edit')->with('articulo', $articulo);
     }
 
     /**
@@ -85,13 +86,12 @@ class ArticuloController extends Controller
     {
         //
         $articulo = Articulo::find($id);
-        $articulo -> codigo = $request->get('codigo');
-        $articulo -> descripcion = $request->get('descripcion');
-        $articulo -> cantidad = $request->get('cantidad');
-        $articulo -> precio = $request->get('precio');
-        $articulo-> save();
+        $articulo->codigo = $request->get('codigo');
+        $articulo->descripcion = $request->get('descripcion');
+        $articulo->cantidad = $request->get('cantidad');
+        $articulo->precio = $request->get('precio');
+        $articulo->save();
         return redirect('/articulos');
-
     }
 
     /**
@@ -106,5 +106,9 @@ class ArticuloController extends Controller
         $articulo = Articulo::find($id);
         $articulo->delete();
         return redirect('/articulos');
+    }
+    public function exportExcel()
+    {
+        return Excel::download(new ArticuloExport, 'article-list.xlsx');
     }
 }

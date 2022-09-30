@@ -37,13 +37,20 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
 
-Route::resource('articulosuser', 'App\Http\Controllers\ArticuloUserController');
+// Route::resource('articulosuser', 'App\Http\Controllers\ArticuloUserController');
 
 Route::resource('usuarios', 'App\Http\Controllers\RegisterController');
 
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
+
+// Route::get('user-list-excel', 'RegisterController@exportExcel')->name('register.excel');
+
+Route::get('/user-list-excel', [RegisterController::class, 'exportExcel'])->name('register.excel');
+
+Route::get('/article-list-excel', [ArticuloController::class, 'exportExcel'])->name('articulo.excel');
+
 //todas las rutas
 // Route::name('admin.')->middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 //     Route::resources([

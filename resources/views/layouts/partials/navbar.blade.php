@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="/homemy"><strong>
                 {{-- <style>
-                    .engranaje {
+                    div.logo {
                         /* cambia estos dos valores para definir el tamaño de tu círculo */
                         height: 100px;
                         width: 100px;
@@ -13,7 +13,7 @@
                         background-size: 100% auto;
                     }
                 </style> --}}
-                <div id="engranaje">
+                <div class="logo">
                     <img src="/img/4.jpeg" width="80px" height="50px">
                 </div>
             </strong></a>
@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/homemy">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/homemy">Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/usuarios">Usuarios</a>

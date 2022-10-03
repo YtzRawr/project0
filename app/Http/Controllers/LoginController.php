@@ -51,8 +51,6 @@ class LoginController extends Controller
                 return redirect()->to('articulos');
             }
         }
-
-
         return back()->withErrors([
             'email' => 'correo o contraseña mal ingresado, intentelo de nuevo',
         ])->onlyInput('email');

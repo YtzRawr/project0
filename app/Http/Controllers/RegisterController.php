@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Exports\UsersExport;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Barryvdh\DomPDF\Facade\PDF;
 
 
 class RegisterController extends Controller
@@ -66,5 +66,13 @@ class RegisterController extends Controller
     public function exportExcel()
     {
         return Excel::download(new UsersExport, 'user-list.xlsx');
+    }
+
+    public function exportPdf()
+    {
+        $users = User::get();
+    	$pdf   = PDF::loadView('pdf.users', compact('users'));
+
+    	return $pdf->download('user-list.pdf');
     }
 }

@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Articulo;
-use Illuminate\Support\Facades\Artisan;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ArticuloExport;
+use Barryvdh\DomPDF\Facade\PDF;
+
 class ArticuloController extends Controller
 {
     /**
@@ -111,4 +112,13 @@ class ArticuloController extends Controller
     {
         return Excel::download(new ArticuloExport, 'article-list.xlsx');
     }
+    public function exportPdf()
+    {
+
+        $articulos = Articulo::get();
+        $pdf   = PDF::loadView('pdf.articulo', compact('articulos'));
+
+        return $pdf->download('articulo-list.pdf');
+    }
+
 }

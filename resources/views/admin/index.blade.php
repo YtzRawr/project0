@@ -16,6 +16,12 @@
                         excel</Strong></a>
             </div>
         </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <a href="{{ route('register.pdf') }}" class="btn btn-danger mb-2 btn-sm"><Strong>Descargar
+                        lista completa PDF</Strong></a>
+            </div>
+        </div>
     </div> {{-- <a href="/registermy" class="btn btn-success mb-3"><Strong>Crear un nuevo usuario</Strong></a> --}}
     {{-- el datable se trae desde un id --}}
     <table class="table table-light table-striped shadow-lg mt-4" id="usuarios">

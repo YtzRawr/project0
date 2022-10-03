@@ -51,6 +51,16 @@ Route::get('/user-list-excel', [RegisterController::class, 'exportExcel'])->name
 
 Route::get('/article-list-excel', [ArticuloController::class, 'exportExcel'])->name('articulo.excel');
 
+// Route::get('/user-list-pdf', [RegisterController::class, 'exportPdf'])->name('register.pdf');
+
+Route::get('user-list-pdf', [RegisterController::class, 'exportPdf'])->name('register.pdf');
+
+Route::get('article-list-pdf', [ArticuloController::class, 'exportPdf'])->name('articulo.pdf');
+
+Route::get('article-list-one-pdf', [ArticuloController::class, 'exportPdf'])->name('articuloone.pdf');
+
+
+
 //todas las rutas
 // Route::name('admin.')->middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 //     Route::resources([

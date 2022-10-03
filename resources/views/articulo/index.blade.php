@@ -51,7 +51,8 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
-                                <a href="{{ route('articulo.pdf') }}" class="btn btn-secondary btn-sm"><Strong>Descargar PDF</Strong></a>
+                                <a href="{{ route('articuloone.pdf', $articulo->id) }}"
+                                    class="btn btn-secondary btn-sm"><Strong>Descargar PDF</Strong></a>
                             </form>
                         </td>
                     </tr>

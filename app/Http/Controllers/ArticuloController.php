@@ -121,4 +121,12 @@ class ArticuloController extends Controller
         return $pdf->download('articulo-list.pdf');
     }
 
+    public function exportPdfOne($id)
+    {
+        $articulo = Articulo::find($id);
+        $pdf   = PDF::loadView('pdf.articuloone', compact('articulo'));
+
+        return $pdf->download('article-list-one-pdf');
+    }
+
 }

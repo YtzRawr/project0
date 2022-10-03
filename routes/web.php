@@ -57,7 +57,7 @@ Route::get('user-list-pdf', [RegisterController::class, 'exportPdf'])->name('reg
 
 Route::get('article-list-pdf', [ArticuloController::class, 'exportPdf'])->name('articulo.pdf');
 
-Route::get('article-list-one-pdf', [ArticuloController::class, 'exportPdf'])->name('articuloone.pdf');
+Route::get('article-list-one-pdf/{id}', [ArticuloController::class, 'exportPdfOne'])->name('articuloone.pdf');
 
 
 

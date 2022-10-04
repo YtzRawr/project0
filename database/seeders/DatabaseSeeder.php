@@ -26,7 +26,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.cl',
             'password' => 'password',
             'role' => 'Administrador'
-
         ]);
         $user = User::find(1);
 

@@ -9,7 +9,7 @@ use App\Exports\UsersExport;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\PDF;
-
+use GuzzleHttp\Promise\Create;
 
 class RegisterController extends Controller
 {
@@ -28,18 +28,34 @@ class RegisterController extends Controller
         //el objeto me permitira manipular la solicitud
         // $user = User::create($request->validated());
         // return redirect('/loginmy')->with('succes', 'Cuenta creada con exito!');
-        $users = new User();
-        $users->name = $request->get('name');
-        $users->email = $request->get('email');
-        $users->password = $request->get('password');
-        $users->role = $request->get('role');
-        $users->save();
+        // dd($request);
+        $request->validate([
+            'name' => 'required', 'email' => 'required', 'password' => 'required', 'role' => 'required', 'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048'
+        ]);
+        $user = $request->all();
+        // dd($user);
+        if ($imagen = $request->file('image')) {
+            $rutaGuardarImg = 'img/';
+            $imagenUser = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenUser);
+            $user['image'] = $imagenUser;
+        }
+        // dd($user);
+        User::create($user);
+        // $users = new User();
+        // $users->name = $request->get('name');
+        // $users->email = $request->get('email');
+        // $users->password = $request->get('password');
+        // $users->role = $request->get('role');
+        // $users->image = $request->get('image');
+        // $users->save();
         return redirect('/loginmy');
+
     }
     public function index()
     {
         $users = User::all();
-        return view('admin.index')->with('usuarios', $users);
+        return view('usuario.index')->with('usuarios', $users);
     }
     public function edit($id)
     {
@@ -71,8 +87,8 @@ class RegisterController extends Controller
     public function exportPdf()
     {
         $users = User::get();
-    	$pdf   = PDF::loadView('pdf.users', compact('users'));
+        $pdf   = PDF::loadView('pdf.users', compact('users'));
 
-    	return $pdf->download('user-list.pdf');
+        return $pdf->download('user-list.pdf');
     }
 }

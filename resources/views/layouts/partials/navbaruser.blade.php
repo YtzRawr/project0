@@ -20,7 +20,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/logout">Cerrar session</a></li>
                         </ul>
-
+                            {{-- <img src="{{ route('img/user()->image') }}"> --}}
                     </li>
                 @endauth
 

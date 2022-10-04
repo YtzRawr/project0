@@ -1,6 +1,4 @@
 @extends('layouts.plantillabase')
-@extends('layouts.partials.navbaruser')
-
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
 @endsection
@@ -11,24 +9,26 @@
     <br>
     <br>
     {{-- el datable se trae desde un id --}}
-    <table class="table table-light table-striped shadow-lg mt-4" id="articulos">
+    <table class="table table-light table-striped shadow-lg mt-4" id="usuarios">
         <thead class="bg-primary ">
             <tr>
                 <th scope="col"><strong>ID</strong></th>
-                <th scope="col"><strong>Codigo</strong></th>
-                <th scope="col"><strong>Descripcion</strong></th>
-                <th scope="col"><strong>Cantidad</strong></th>
-                <th scope="col"><strong>Precio</strong></th>
+                <th scope="col"><strong>Nombre</strong></th>
+                <th scope="col"><strong>Email</strong></th>
+                <th scope="col"><strong>Role</strong></th>
+                <th scope="col"><strong>Foto de perfil</strong></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($articulos as $articulo)
+            @foreach ($usuarios as $usuario)
                 <tr>
-                    <td>{{ $articulo->id }}</td>
-                    <td>{{ $articulo->codigo }}</td>
-                    <td>{{ $articulo->descripcion }}</td>
-                    <td>{{ $articulo->cantidad }}</td>
-                    <td>{{ $articulo->precio }}</td>
+                    <td>{{ $usuario->id }}</td>
+                    <td>{{ $usuario->name }}</td>
+                    <td>{{ $usuario->email }}</td>
+                    <td>{{ $usuario->role }}</td>
+                    <td>
+                        <img src="/img/{{$usuario->image}}" width="50px" height="20px">
+                    </td>
                 </tr>
             @endforeach
         </tbody>

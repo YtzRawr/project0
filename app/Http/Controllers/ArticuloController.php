@@ -42,13 +42,27 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $articulos = new Articulo();
-        $articulos->codigo = $request->get('codigo');
-        $articulos->descripcion = $request->get('descripcion');
-        $articulos->cantidad = $request->get('cantidad');
-        $articulos->precio = $request->get('precio');
-        $articulos->save();
+        // dd($request);
+        $request->validate([
+            'codigo' => 'required', 'descripcion' => 'required', 'precio' => 'required', 'cantidad' => 'required', 'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048'
+        ]);
+        // dd($request);
+        $articulo = $request->all();
+        // dd($articulo);
+        if ($imagen = $request->file('image')) {
+            $rutaGuardarImg = 'img/';
+            $imagenArticulo = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenArticulo);
+            $articulo['image'] = "/{$rutaGuardarImg}{$imagenArticulo}";
+        }
+        // dd($articulo);
+        Articulo::create($articulo);
+        // $articulos = new Articulo();
+        // $articulos->codigo = $request->get('codigo');
+        // $articulos->descripcion = $request->get('descripcion');
+        // $articulos->cantidad = $request->get('cantidad');
+        // $articulos->precio = $request->get('precio');
+        // $articulos->save();
         return redirect('/articulos');
     }
 
@@ -128,5 +142,4 @@ class ArticuloController extends Controller
 
         return $pdf->download('article-list-one-pdf');
     }
-
 }

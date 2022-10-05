@@ -38,7 +38,7 @@ class RegisterController extends Controller
             $rutaGuardarImg = 'img/';
             $imagenUser = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
             $imagen->move($rutaGuardarImg, $imagenUser);
-            $user['image'] = $imagenUser;
+            $user['image'] = "/{$rutaGuardarImg}{$imagenUser}";
         }
         // dd($user);
         User::create($user);

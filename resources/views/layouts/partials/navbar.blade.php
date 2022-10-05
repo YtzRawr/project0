@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="/homemy"><strong>
                 <div class="justify-start ">
-                    <img src="/img/4.jpeg" width="80px" height="50px" class="rounded-circle">
+                    <img src="/img/4.jpeg" width="70px" height="50px" class="rounded-circle">
                 </div>
             </strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -21,8 +21,8 @@
         </div>
         @auth
             <div>
-                <img src="/img/{{ auth()->user()->image ?? 'user-logo2.webp' }}" class="rounded-circle mb-2" width="50px"
-                    height="40px">
+                <img src="{{ auth()->user()->image }}" class="rounded-circle mb-2" width="40px"
+                    height="35px">
             </div>
             <div class="justify-end">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

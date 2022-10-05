@@ -5,7 +5,7 @@
 
 
 @section('contenido')
-    <h3><strong>Registro de productos</strong></h3>
+    <h3><strong>Registro de usuarios</strong></h3>
     <br>
     <br>
     {{-- el datable se trae desde un id --}}
@@ -27,7 +27,7 @@
                     <td>{{ $usuario->email }}</td>
                     <td>{{ $usuario->role }}</td>
                     <td>
-                        <img src="/img/{{$usuario->image}}" width="50px" height="20px">
+                        <img src="{{$usuario->image}}" width="60px" height="65px" class="rounded-circle">
                     </td>
                 </tr>
             @endforeach

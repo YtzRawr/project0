@@ -34,6 +34,7 @@
                 <th scope="col"><strong>Descripcion</strong></th>
                 <th scope="col"><strong>Cantidad</strong></th>
                 <th scope="col"><strong>Precio</strong></th>
+                <th scope="col"><strong>Foto</strong></th>
                 @role('Administrador')
                     <th scope="col"><strong>Acciones</strong></th>
                 @endrole
@@ -47,6 +48,9 @@
                     <td>{{ $articulo->descripcion }}</td>
                     <td>{{ $articulo->cantidad }}</td>
                     <td>{{ $articulo->precio }}</td>
+                    <td>
+                        <img src="{{$articulo->image}}" width="60px" height="65px" class="rounded-circle">
+                    </td>
                     @role('Administrador')
                         <td>
                             <form action="{{ route('articulos.destroy', $articulo->id) }}" method="POST">

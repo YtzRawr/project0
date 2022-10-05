@@ -23,6 +23,7 @@ class ArticuloFactory extends Factory
             'cantidad' => fake()->randomDigit(),
             'precio' => fake()->randomNumber(8),
             'codigo' => fake()->randomDigit(),
+            'image' => fake()->imageUrl($width=100, $height=120, 'cats'),
         ];
     }
 

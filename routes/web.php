@@ -11,7 +11,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticuloUserController;
+use App\Mail\Contacto;
 use App\Models\Articulo;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +61,13 @@ Route::get('article-list-pdf', [ArticuloController::class, 'exportPdf'])->name('
 
 Route::get('article-list-one-pdf/{id}', [ArticuloController::class, 'exportPdfOne'])->name('articuloone.pdf');
 
+Route::get('contactanos', function(){
 
+    $correo = new Contacto;
+    Mail::to('matiaspizarro133@gmail')->send($correo);
+
+    return "Mensaje enviado";
+});
 
 //todas las rutas
 // Route::name('admin.')->middleware(['auth', 'verified'])->prefix('admin')->group(function () {

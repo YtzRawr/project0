@@ -7,19 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Contacto extends Mailable
+class UserRegister extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Informacion de contacto";
+    public $subject = "Registro completado!";
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
         //
+        $this->user = $user;
     }
 
     /**

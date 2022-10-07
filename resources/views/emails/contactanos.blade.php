@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Correo automatico</title>
 </head>
+
 <body>
-    <h4>Correo electronico</h4>
-    <p>Primer correo de prueba</p>
+    <h4><strong>Gracias por registrarte</strong></h4>
+    <p>Gracias por registrarte ahora podras navegar dentro del software como usuario, las funciones que podras hacer:</p>
+    <p> - Visualizar lista de usuarios
+        - Visualizar lista de productos</p>
+    <p> debes de tener los permisos de administrador para poder crear nuevos usuarios y poder crear , eliminar o
+        modificar
+        nuevos usuarios,
+        si deseas realizar eso debes de hablar con un administrador para que te de los permisos!</p>
+    <p>Que tengas buen dia! 👍🏽</p>
+    {{-- <img src="https://images.app.goo.gl/JxgJZVA4zuuYq2HE9" class="rounded-circle justify-center" width="35" height="40px"> --}}
 </body>
+
 </html>

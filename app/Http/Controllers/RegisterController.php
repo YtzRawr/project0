@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 // use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Exports\UsersExport;
+use App\Mail\UserRegister;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\PDF;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Mail;
+
 
 class RegisterController extends Controller
 {
@@ -28,20 +31,20 @@ class RegisterController extends Controller
         //el objeto me permitira manipular la solicitud
         // $user = User::create($request->validated());
         // return redirect('/loginmy')->with('succes', 'Cuenta creada con exito!');
-        // dd($request);
         $request->validate([
             'name' => 'required', 'email' => 'required', 'password' => 'required', 'role' => 'required', 'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048'
         ]);
         $user = $request->all();
-        // dd($user);
         if ($imagen = $request->file('image')) {
             $rutaGuardarImg = 'img/';
             $imagenUser = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
             $imagen->move($rutaGuardarImg, $imagenUser);
             $user['image'] = "/{$rutaGuardarImg}{$imagenUser}";
         }
-        // dd($user);
-        User::create($user);
+        $newuser = User::create($user);
+        $correo = new UserRegister($newuser);
+        Mail::to($newuser->email)->send($correo);
+
         // $users = new User();
         // $users->name = $request->get('name');
         // $users->email = $request->get('email');
@@ -50,7 +53,6 @@ class RegisterController extends Controller
         // $users->image = $request->get('image');
         // $users->save();
         return redirect('/loginmy');
-
     }
     public function index()
     {

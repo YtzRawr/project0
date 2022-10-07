@@ -61,10 +61,10 @@ Route::get('article-list-pdf', [ArticuloController::class, 'exportPdf'])->name('
 
 Route::get('article-list-one-pdf/{id}', [ArticuloController::class, 'exportPdfOne'])->name('articuloone.pdf');
 
-Route::get('contactanos', function(){
+Route::get('contactanos', function () {
 
     $correo = new Contacto;
-    Mail::to('matiaspizarro133@gmail')->send($correo);
+    Mail::to('matiaspizarro13367@gmail.com')->send($correo);
 
     return "Mensaje enviado";
 });

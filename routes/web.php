@@ -62,12 +62,21 @@ Route::get('article-list-pdf', [ArticuloController::class, 'exportPdf'])->name('
 Route::get('article-list-one-pdf/{id}', [ArticuloController::class, 'exportPdfOne'])->name('articuloone.pdf');
 
 Route::get('contactanos', function () {
-
-    $correo = new Contacto;
-    Mail::to('matiaspizarro13367@gmail.com')->send($correo);
-
-    return "Mensaje enviado";
 });
+
+Route::resource('dropdown', \App\Http\Controllers\AddressController::class)->only(['create', 'store', 'select2']);
+
+Route::get('cities', [\App\Http\Controllers\CityController::class, 'index'])->name('cities.index');
+
+Route::get('states', [\App\Http\Controllers\StateController::class, 'index'])->name('states.index');
+
+Route::get('select2', [\App\Http\Controllers\AddressController::class, 'select2'])->name('select2');
+
+Route::get('dropdown/search', function () {
+    return view('dropdown-search');
+});
+
+Route::get('livewire', \App\Http\Livewire\CountryStateCity::class);
 
 //todas las rutas
 // Route::name('admin.')->middleware(['auth', 'verified'])->prefix('admin')->group(function () {

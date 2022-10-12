@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 use App\Models\User;
-
+use App\Models\City;
+use App\Models\Country;
+use App\Models\State;
+use GuzzleHttp\Promise\Create;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -18,6 +21,21 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
+        // \App\Models\State::factory(10)->create();
+        // \App\Models\City::factory(10)->create();
+        // \App\Models\Country::factory(10)->create();
+
+        $countries = Country::factory()->count(4)->create();
+        foreach($countries as $country){
+            $states = State::factory()->count(4)
+            ->create(['country_id'=>$country->id]);
+
+            foreach($states as $state){
+                $cities = City::factory()->count(4)
+                ->create(['state_id'=>$state->id]);
+            }
+        }
+
         $role1 = Role::create(['name' => 'Administrador']);
         $role2 = Role::create(['name' => 'Usuario']);
 
@@ -53,5 +71,9 @@ class DatabaseSeeder extends Seeder
             'precio' => '120000',
             'codigo' => '9900',
         ]);
+
+
+
+
     }
 }

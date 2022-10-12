@@ -18,7 +18,6 @@
         nuevos usuarios,
         si deseas realizar eso debes de hablar con un administrador para que te de los permisos!</p>
     <p>Que tengas buen dia! 👍🏽</p>
-    {{-- <img src="https://images.app.goo.gl/JxgJZVA4zuuYq2HE9" class="rounded-circle justify-center" width="35" height="40px"> --}}
 </body>
 
 </html>

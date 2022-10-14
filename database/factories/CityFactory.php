@@ -19,7 +19,7 @@ class CityFactory extends Factory
     {
         return [
             //
-            'name'=> fake()->name(),
+            'name'=> fake()->city(),
             // 'country' => fake()->city(),
             'latitude' => fake()->latitude($min = -90, $max = 90),
             'longitude'=> fake()->longitude($min = -180, $max = 180),

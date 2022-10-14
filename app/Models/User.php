@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -28,7 +29,29 @@ class User extends Authenticatable
         'password',
         'role',
         'image',
+        'state_id',
+        'country_id',
+        'city_id'
+
     ];
+    /**
+     * Get the post that owns the comment.
+     */
+    public function state()
+    {
+         $this->belongsTo(State::class);
+
+    }
+    public function country()
+    {
+         $this->belongsTo(Country::class);
+
+    }
+    public function city()
+    {
+         $this->belongsTo(City::class);
+
+    }
 
     /**
      * The attributes that should be hidden for serialization.

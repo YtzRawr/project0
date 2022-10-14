@@ -64,7 +64,7 @@ Route::get('article-list-one-pdf/{id}', [ArticuloController::class, 'exportPdfOn
 Route::get('contactanos', function () {
 });
 
-Route::resource('dropdown', \App\Http\Controllers\AddressController::class)->only(['create', 'store', 'select2']);
+Route::resource('dropdown', \App\Http\Controllers\RegisterController::class)->only(['create', 'store', 'select2']);
 
 Route::get('cities', [\App\Http\Controllers\CityController::class, 'index'])->name('cities.index');
 

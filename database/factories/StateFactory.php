@@ -19,7 +19,7 @@ class StateFactory extends Factory
     {
         return [
             //
-            'name' =>fake()->name(),
+            'name' =>fake()->state(),
             'code' =>fake()->randomDigit(),
         ];
     }

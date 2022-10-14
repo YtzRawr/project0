@@ -12,6 +12,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\PDF;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Country;
+
 
 
 class RegisterController extends Controller
@@ -24,7 +26,7 @@ class RegisterController extends Controller
             return redirect('/homemy');
         }
         // me retornara la vista
-        return view('auth.register');
+        return view('auth.register', ['countries' => Country::all()]);
     }
     public function registermy(Request $request)
     {
@@ -32,7 +34,14 @@ class RegisterController extends Controller
         // $user = User::create($request->validated());
         // return redirect('/loginmy')->with('succes', 'Cuenta creada con exito!');
         $request->validate([
-            'name' => 'required', 'email' => 'required', 'password' => 'required', 'role' => 'required', 'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048'
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048',
+            'state_id' =>'required',
+            'city_id' =>'required',
+            'country_id' =>'required'
         ]);
         $user = $request->all();
         if ($imagen = $request->file('image')) {
@@ -45,13 +54,6 @@ class RegisterController extends Controller
         $correo = new UserRegister($newuser);
         Mail::to($newuser->email)->send($correo);
 
-        // $users = new User();
-        // $users->name = $request->get('name');
-        // $users->email = $request->get('email');
-        // $users->password = $request->get('password');
-        // $users->role = $request->get('role');
-        // $users->image = $request->get('image');
-        // $users->save();
         return redirect('/loginmy');
     }
     public function index()
@@ -92,5 +94,20 @@ class RegisterController extends Controller
         $pdf   = PDF::loadView('pdf.users', compact('users'));
 
         return $pdf->download('user-list.pdf');
+    }
+    public function create()
+    {
+        $countries = Country::all();
+
+        return view('dropdown-page', compact('countries'));
+    }
+    public function select2()
+    {
+        $countries = Country::all();
+
+        return view('select2-page', compact('countries'));
+    }
+    public function store(Request $request)
+    {
     }
 }

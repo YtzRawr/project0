@@ -18,7 +18,7 @@ class CountryFactory extends Factory
     {
         return [
             //
-            'name' => fake()->name(),
+            'name' => fake()->country(),
             'short_code'=>fake()->randomDigit(),
         ];
     }

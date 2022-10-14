@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('role')->nullable();
             $table->string('image')->nullable();
+            $table->foreignId('city_id')->nullable();
+            $table->foreignId('state_id')->nullable();
+            $table->foreignId('country_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

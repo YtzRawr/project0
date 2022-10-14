@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/states/{country_id}', [AjaxController::class, 'state']);
+
+Route::get('/cities/{state_id}', [AjaxController::class, 'city']);

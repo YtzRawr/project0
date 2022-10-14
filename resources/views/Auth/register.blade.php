@@ -1,75 +1,74 @@
 @extends('layouts.auth-master')
-
-@section('content')
-    <form action="/registermy" method="POST" enctype="multipart/form-data">
-        @csrf
-        @include('layouts.partials.messages')
-        <div class="mb-2 row">
-            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Nombre</strong></label>
-            <div class="col-sm-10">
-                <input type="text" name="name" placeholder="ej: Mariano" class="form-control">
+<div class="d-flex justify-content-center">
+    @section('content2')
+        <form class="row g-3 p-5" action="/registermy" method="POST" enctype="multipart/form-data" id="form_register_id">
+            @csrf
+            @include('layouts.partials.messages')
+            <h3 class="mb-3 text-primary">Formulario de registro</h3>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label"><strong>Nombre</strong></label>
+                <input type="text" class="form-control" id="inputEmail3" name="name">
             </div>
-            <label for="staticEmail" class="col-sm-3 col-form-label"><strong>Email</strong></label>
-            <div class="col-sm-10">
-                <input type="email" name="email" placeholder="example@example.cl" class="form-control">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label"><strong>Email</strong></label>
+                <input type="email" class="form-control" id="inputEmail4" name="email">
             </div>
-        </div>
-        <div class="mb-2 row">
-            <label for="inputPassword" class="col-sm-3 col-form-label"><strong>Password</strong></label>
-            <div class="col-sm-10">
-                <input type="password" name="password" class="form-control">
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label"><strong>Contraseña</strong></label>
+                <input type="password" class="form-control" id="inputPassword4" name="password">
             </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-3 col-form-label"><strong>Repetir password</strong></label>
-            <div class="col-sm-10">
-                <input type="password" name="password_confirmation" class="form-control">
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label"><strong>Repetir contraseña</strong></label>
+                <input type="password" class="form-control" id="inputPassword4" name="password_confirmation">
             </div>
-        </div>
-        <div class="mb-2 row ">
-            <label class="mb-2"><strong>Seleccione un role</strong></label>
-            <select class="form-select mb-2 form-control" aria-label="Default select example" name="role">
-                <option value="Administrador" name="Administrador">Administrador</option>
-                <option value="Usuario" name="Usuario">Usuario</option>
-            </select>
-        </div>
-        <div class="mb-3 row">
-            <label for="inputImg" class="col-sm-10 col-form-label"><strong>Selecciona una imagen de perfil</strong></label>
-            <div class="col-sm-10">
-                <input type="file" name="image" id="image" class="form-control">
+            <div class="col-md-6">
+                <label class="mb-2 form-label"><strong>Seleccione un role</strong></label>
+                <select class="form-select mb-2 form-control" aria-label="Default select example" name="role">
+                    <option value="Administrador" name="Administrador">Administrador</option>
+                    <option value="Usuario" name="Usuario">Usuario</option>
+                </select>
             </div>
-        </div>
-        {{-- Lugar de nacimiento --}}
-        <div class="mb-2 row">
+            <div class="col-md-6">
+                <label for="inputImg" class="col-sm-10 form-label"><strong>Selecciona una imagen de
+                        perfil</strong></label>
+                <div class="col-sm-10">
+                    <input type="file" name="image" id="image" class="form-control">
+                </div>
+            </div>
+            {{-- residencia --}}
             <div>
-                <label for=""><strong>Pais</strong></label>
-                <select id="country_id" name="country_id" onchange="getStates()" class="form-select">
+                <h4 class="mb-2 text-primary">Lugar de residencia</h4>
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label"><strong>Pais</strong></label>
+                <select name="country_id" id="country_id" onchange="getStates()" class="form-select">
                     <option value="">Seleccione un país</option>
                     @foreach ($countries as $country)
                         <option value="{{ $country->id }}">{{ $country->name }}</option>
                     @endforeach
                 </select>
             </div>
-            {{-- country --}}
-            <div>
-                <label for="" class="mb-1"><Strong>Estado</Strong></label>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label"><strong>Estado</strong></label>
                 <select class="form-select" aria-label="Default select example" id="state_id" onchange="getCities()"
                     name="state_id">
-                    <option value="">Debe seleccionar un estado</option>
+                    <option value="">Seleccione un estado</option>
                 </select>
             </div>
-            {{-- state --}}
-            <div>
-                <label for=""><strong>Ciudad</strong></label>
-                <select name="city_id" id="city_id" class="form-select" aria-label="Default select example">
-                    <option value="">Debe seleccionar una ciudad</option>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label"><strong>Ciudad</strong></label>
+                <select name="city_id" id="city_id" class="form-select">
+                    <option value="">Seleccione una ciudad</option>
                 </select>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Registrarse</button>
-        <p>¿Ya dispone de una cuenta?, inicie session <a href="/loginmy"><strong>Aqui</strong></a></p>
-    </form>
-@endsection
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary"><strong>Registrarse</strong></button>
+            </div>
+            <p>¿Ya dispone de una cuenta?, inicie session <a href="/loginmy"><strong>Aqui</strong></a></p>
+        </form>
+    @endsection
+</div>
+
 <script>
     function getStates() {
         var item = document.querySelector('#country_id');
